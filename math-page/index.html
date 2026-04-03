@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathGlyph — Mathematical Notation Reference</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <link rel="stylesheet" href="src/style/style.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+</head>
+<body>
+<div id="toast"></div>
+<button id="back-top" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<header>
+    <span class="hd">∑ ∫ ∂ ∞ ∈ ∀ ∃ ∇ ⊗ ≡ α β γ ±</span>
+    <h1>MathGlyph</h1>
+    <p id="header-desc">A reference guide to mathematical symbols and notation — with LaTeX source, explanations, Greek letters, abbreviations, notation variants, and worked examples.</p>
+    <div class="hstats">
+        <div class="hstat"><strong id="stat-symbols">110+</strong><span>Symbols</span></div>
+        <div class="hstat"><strong>24</strong><span>Greek Letters</span></div>
+        <div class="hstat"><strong>50+</strong><span>Abbreviations</span></div>
+        <div class="hstat"><strong>8</strong><span>Categories</span></div>
+    </div>
+</header>
+
+<div class="toolbar">
+    <div class="search-wrap">
+        <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="search" placeholder="Search… (Press /)" autocomplete="off">
+    </div>
+    <div class="filter-row" id="filter-row">
+        <span class="filter-label">Filter:</span>
+        <button class="filter-btn active" data-cat="all">All</button>
+        <button class="filter-btn" data-cat="logic">Logic</button>
+        <button class="filter-btn" data-cat="set">Sets</button>
+        <button class="filter-btn" data-cat="linalg">Linear Algebra</button>
+        <button class="filter-btn" data-cat="calculus">Calculus</button>
+        <button class="filter-btn" data-cat="probability">Probability</button>
+        <button class="filter-btn" data-cat="statistics">Statistics</button>
+        <button class="filter-btn" data-cat="algebra">Algebra</button>
+        <button class="filter-btn" data-cat="misc">General</button>
+    </div>
+    <div class="toolbar-actions">
+        <div class="fs-control">
+            <label for="fs-select">Size</label>
+            <select id="fs-select">
+                <option value="12">12px</option>
+                <option value="13">13px</option>
+                <option value="14">14px</option>
+                <option value="15">15px</option>
+                <option value="16" selected>16px</option>
+                <option value="17">17px</option>
+                <option value="18">18px</option>
+                <option value="19">19px</option>
+                <option value="20">20px</option>
+            </select>
+        </div>
+        <button class="tb-btn" onclick="window.print()">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print
+        </button>
+        <button class="tb-btn" id="btn-csv">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            CSV
+        </button>
+        <button class="tb-btn" id="btn-json">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            JSON
+        </button>
+        <button class="tb-btn" id="btn-md">
+            <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Markdown
+        </button>
+    </div>
+</div>
+
+<div class="tabs">
+    <button class="tab-btn active" data-tab="symbols">Symbols</button>
+    <button class="tab-btn" data-tab="greek">Greek Alphabet</button>
+    <button class="tab-btn" data-tab="variants">Notation Variants</button>
+    <button class="tab-btn" data-tab="abbr">Abbreviations</button>
+    <button class="tab-btn" data-tab="equations">Famous Equations</button>
+</div>
+
+<div class="count-bar" id="count-bar">
+    <span id="count-text">Loading…</span>
+    <span class="count-bar-spacer"></span>
+    <button class="toggle-all-btn" id="toggle-all-btn">Expand all</button>
+</div>
+
+<div class="panel active" id="panel-symbols"><div class="grid" id="grid"></div></div>
+
+<div class="panel" id="panel-greek">
+    <div class="section-panel">
+        <h2>Greek Alphabet</h2>
+        <p class="section-desc">All 24 Greek letters plus Nabla — with names, LaTeX commands, and their most common mathematical uses. Click the copy buttons for the LaTeX command or the Unicode character.</p>
+        <table class="ref-table" id="greek-table">
+            <thead><tr><th style="width:120px;white-space:nowrap">Symbol</th><th>Name</th><th>LaTeX</th><th>Common uses in mathematics</th><th></th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<div class="panel" id="panel-variants">
+    <div class="section-panel">
+        <h2>Notation Variants</h2>
+        <p class="section-desc">The same symbol can mean different things depending on the field. These are the most common sources of confusion when reading across disciplines.</p>
+        <div id="variants-content"></div>
+    </div>
+</div>
+
+<div class="panel" id="panel-abbr">
+    <div class="section-panel">
+        <h2>Common Abbreviations</h2>
+        <p class="section-desc">Abbreviations from statistics, machine learning, econometrics, and general mathematics — drawn from all six source documents.</p>
+        <div class="abbr-grid" id="abbr-grid"></div>
+    </div>
+</div>
+
+<div class="panel" id="panel-equations">
+    <div class="section-panel">
+        <h2>17 Equations That Changed the World</h2>
+        <p class="section-desc">From Ian Stewart's book — the most influential equations in the history of mathematics and science, with descriptions and real-world examples.</p>
+        <div id="eq-grid"></div>
+    </div>
+</div>
+
+<footer>
+    MathGlyph &mdash; <em>Discrete Mathematics</em> (Grami, 2022) &middot; <em>Probabilistic Machine Learning</em> (Murphy, 2023) &middot; <em>Foundations of Agnostic Statistics</em> (Aronow &amp; Miller, 2019) &middot; <em>ML Notation</em> (Holzinger, 2017) &middot; <em>Introductory Statistics</em> (OpenStax) &middot; <em>Notation in Econometrics</em> (Abadir &amp; Magnus, 2002) &middot; <em>Glossary of Mathematical Symbols</em> (Wikipedia)
+</footer>
+
+<script src="src/js/data.js"></script>
+<script src="src/js/utils.js"></script>
+<script src="src/js/export.js"></script>
+<script src="src/js/render.js"></script>
+<script src="src/js/app.js"></script>
+</body>
+</html>
